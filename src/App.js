@@ -1,7 +1,6 @@
 import React,{useState} from "react";
 import Header from "./components/Header";
 import Movielist from "./components/Movielist";
-import Moviecard from "./components/Moviecard";
 import Bookingcart from "./components/Bookingcart"; 
 import './App.css';
 
