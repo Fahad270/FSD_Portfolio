@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React,{useState} from "react";
+import Header from "./components/Header";
+import Movielist from "./components/Movielist";
+import Moviecard from "./components/Moviecard";
+import Bookingcart from "./components/Bookingcart"; 
 import './App.css';
 
 function App() {
+  const movies = [
+    { id: 1, title: "Dhurandhar 2 ", price: 200 }, { id: 2, title: "Avengers", price: 350 }, { id: 3, title: "Inception", price: 290 }
+  ];
+  
+  const [bookings, setBookings] = useState([]);
+
+  const addBooking = (movie) => {
+    setBookings([...bookings, movie]);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header totalTickets={bookings.length} />
+      <Movielist movies={movies}  addBooking={addBooking}/>
+      <Bookingcart bookings={bookings}/>
     </div>
   );
+
 }
 
 export default App;
