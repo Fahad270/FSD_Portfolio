@@ -1,4 +1,6 @@
+import React from "react";
 import Moviecard from "./Moviecard";
+import "./Movielist.css";
 
 function Movielist() {
   const movies = [
@@ -9,7 +11,7 @@ function Movielist() {
   ];
 
   return (
-    <div className="movies-grid">
+    <div className="movies-container">
       {movies.map((movie) => (
         <Moviecard key={movie.id} movie={movie} />
       ))}
