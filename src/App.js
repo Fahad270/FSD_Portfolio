@@ -1,27 +1,27 @@
-import React,{useState} from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import Header from "./components/Header";
-import Movielist from "./components/Movielist";
-import Bookingcart from "./components/Bookingcart"; 
-import './App.css';
+import Home from "./components/Home";
+import MovieList from "./components/Movielist";
+import BookingCart from "./components/Bookingcart";
+import About from "./components/About";
 
 function App() {
-  const movies = [
-    { id: 1, title: "Dhurandhar 2 ", price: 200 }, { id: 2, title: "Avengers", price: 350 }, { id: 3, title: "Inception", price: 290 }
-  ];
-  
-  const [bookings, setBookings] = useState([]);
+  const bookings = useSelector((state) => state.bookings);
 
-  const addBooking = (movie) => {
-    setBookings([...bookings, movie]);
-  }
   return (
-    <div className="App">
+    <Router>
       <Header totalTickets={bookings.length} />
-      <Movielist movies={movies}  addBooking={addBooking}/>
-      <Bookingcart bookings={bookings}/>
-    </div>
-  );
 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<MovieList />} />
+        <Route path="/cart" element={<BookingCart />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
