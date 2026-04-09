@@ -1,0 +1,23 @@
+{
+  "name": "exp4",
+  "version": "1.0.0",
+  "main": "index3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index3.js",
+    "dev": "nodemon index3.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1"
+  }
+}

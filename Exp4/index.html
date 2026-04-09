@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="f1">
+      <input type="text" placeholder="Enter the name " id="T1" />
+      <input type="text" placeholder="Enter the Branch" id="T2" />
+      <input
+        type="text"
+        placeholder="Enter the year eg:Second Year  "
+        id="T3"
+      />
+      <input type="submit" name="Submit Form !" />
+    </form>
+    <p id="p1">Student Name:</p>
+    <p id="p2">Branch :</p>
+    <p id="p3">Year :</p>
+
+    <script>
+      const f1 = document.getElementById("f1");
+      const name = document.getElementById("T1");
+      const branch = document.getElementById("T2");
+      const year = document.getElementById("T3");
+      f1.addEventListener("submit", async (e) => {
+        //prevents forms resubmmission/reload
+        e.preventDefault();
+        const namev = name.value;
+        const branchv = branch.value;
+        const yearv = year.value;
+        //fetch ka syntrax is url,[options]
+        const response = await fetch("http://localhost:3000/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: namev, branch: branchv, year: yearv }),
+        });
+
+        const data = await response.json(); //response returned back form the backend..........
+        const p1 = document.getElementById("p1");
+        const p2 = document.getElementById("p2");
+        const p3 = document.getElementById("p3");
+        p1.textContent = "Student  Name:" + data.name;
+        p2.textContent = "Branch:" + data.branch;
+        p3.textContent = "Year" + data.year;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Rain Checker</title>
+  </head>
+  <body>
+    <h1>🌦️ Rain Prediction App</h1>
+
+    <form action="/check" method="POST">
+      <input type="text" name="city" placeholder="Enter City" required />
+      <button type="submit">Check Rain</button>
+    </form>
+
+    <% if (result) { %>
+    <h2><%= result %></h2>
+    <% } %>
+  </body>
+</html>
